@@ -28,4 +28,8 @@ This repository also includes a script for generating a corpus for the following
   
 The file titled russians_rus.xml is the final Russian dialog corpus.
   
-  
+# About python3 branch
+1. help-clean.ipynb
+    * In the end of some lines of items.json, there might be a '\[' instead of a ',', which make json file broken. To help CorpusGenerator.py, we need to replace there ending with ',' in hand.
+2. select_pair.ipynb
+    * turn russians_rus.xml into a src and a tgt, which is the input files' format of [OpenNMT](https://github.com/OpenNMT/OpenNMT-py).
