@@ -77,7 +77,7 @@ for conversation in dialog.findall(CONVERSATION):
 # Analyze the corpus
 numberOfConversations = len(conversations)
 numberOfDistinctSpeakers = len(speakers)
-largestUid = max([int(k) for k, v in speakers.iteritems()])
+largestUid = max([int(k) for k, v in speakers.items()])
 
 utterancesPerConversationCount = [len(v) for v in conversations]
 numberOfUtterances = sum(utterancesPerConversationCount)
@@ -91,8 +91,8 @@ wordsInUtteranceMax = max(wordsPerUtteranceCount)
 averageNumberOfWordsPerUtterance = sum(wordsPerUtteranceCount) / numberOfUtterances
 numberOfDistinctWords = len(words)
 
-filteredWords = {k:v for k,v in words.iteritems() if len(k) >= MIN_WORD_LENGTH}
-topWords = sorted(filteredWords.iteritems(), key=lambda x:-x[1])[:10]
+filteredWords = {k:v for k,v in words.items() if len(k) >= MIN_WORD_LENGTH}
+topWords = sorted(filteredWords.items(), key=lambda x:-x[1])[:10]
 
 wordCountGroups = []
 groupLength = math.ceil(wordsInUtteranceMax/100.0)
@@ -139,28 +139,28 @@ averageNumberOfTurnsPerConversation /= numberOfConversations
 
 # Print the corpus description
 
-print "ISO 639-2 language code = " + ISO_LANGUAGE_CODE
+print("ISO 639-2 language code = " + ISO_LANGUAGE_CODE)
 
-print "Number of conversations = " + str(numberOfConversations)
-print "Number of distinct speakers = " + str(numberOfDistinctSpeakers)
+print( "Number of conversations = " + str(numberOfConversations))
+print( "Number of distinct speakers = " + str(numberOfDistinctSpeakers))
 
-print "Number of utterances = " + str(numberOfUtterances)
-print "Least number of utterances in a conversation = " + str(utterancesInConversationMin)
-print "Most number of utterances in a conversation = " + str(utterancesInConversationMax)
-print "Average number of utterances per conversation = " + str(averageNumberOfUtterancesPerConversation)
-print "Average number of turns per conversation = " + str(averageNumberOfTurnsPerConversation)
+print( "Number of utterances = " + str(numberOfUtterances))
+print( "Least number of utterances in a conversation = " + str(utterancesInConversationMin))
+print( "Most number of utterances in a conversation = " + str(utterancesInConversationMax))
+print( "Average number of utterances per conversation = " + str(averageNumberOfUtterancesPerConversation))
+print( "Average number of turns per conversation = " + str(averageNumberOfTurnsPerConversation))
 
-print "Number of distinct words = " + str(numberOfDistinctWords)
-print "Least number of words in an utterance = " + str(wordsInUtteranceMin)
-print "Most number of words in an utterance = " + str(wordsInUtteranceMax)
-print "Average number of words per utterance = " + str(averageNumberOfWordsPerUtterance)
+print( "Number of distinct words = " + str(numberOfDistinctWords))
+print( "Least number of words in an utterance = " + str(wordsInUtteranceMin))
+print( "Most number of words in an utterance = " + str(wordsInUtteranceMax))
+print( "Average number of words per utterance = " + str(averageNumberOfWordsPerUtterance))
 
-print "Word count per utterance distribution = "
+print( "Word count per utterance distribution = ")
 for group in wordCountGroups:
-    print '\t' + str(group[0]) + '\t' + str(group[1])
-print "Utterance count per conversation distribution = "
+    print( '\t' + str(group[0]) + '\t' + str(group[1]))
+print( "Utterance count per conversation distribution = ")
 for group in utteranceCountGroups:
-    print '\t' + str(group[0]) + '\t' + str(group[1])
-print "Top " + str(TOP_WORDS) + " occuring words = "
+    print( '\t' + str(group[0]) + '\t' + str(group[1]))
+print( "Top " + str(TOP_WORDS) + " occuring words = ")
 for word in topWords:
-    print '\t' + word[0] + '\t' + str(word[1])
+    print( '\t' + word[0] + '\t' + str(word[1]))

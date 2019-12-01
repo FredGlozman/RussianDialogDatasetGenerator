@@ -25,6 +25,7 @@ import re
 import json
 import codecs
 import xml.etree.cElementTree as ET
+from copy import deepcopy
 
 INPUT_FILE_NAME = 'items.json'
 OUTPUT_FILE_NAME = 'russians_rus.xml'
@@ -111,7 +112,8 @@ def generateCorpus(data):
 
             corpus['conversations'][url] += [(speaker, uid, utterance)]
     
-    for k,v in corpus['conversations'].items():
+    tmp_corpus = deepcopy(corpus)
+    for k,v in tmp_corpus['conversations'].items():
         if len(v) <= 1:
             del corpus['conversations'][k]
             continue
